@@ -21,7 +21,7 @@ with pd.HDFStore('./token-frequencies-by-language.h5', mode='r') as store:
    data = store['/zul']
 ```
 
-`store.keys() will list all the language tables.
+`store.keys()` will list all the language tables.
 
 
 ## A Good General Purpose Vocabulary List

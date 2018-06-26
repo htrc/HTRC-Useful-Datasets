@@ -1,2 +1,3 @@
 token-frequencies/token-frequencies-by-language.h5
 token-frequencies/wordlist.h5
+volume-tables/data/*h5

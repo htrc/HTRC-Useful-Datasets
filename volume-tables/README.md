@@ -1,5 +1,6 @@
 Volume-level Frequency Tables
 -------------------------------
+**data/*.h5**
 
 The data in this folder includes a dense representation of all books with words in the EF 2.0 release, presented as tables in the following format:
 
@@ -11,13 +12,19 @@ Where
  - `volume` is a numeric id, mapped to a HathiTrust ID according to `./volume-id-key.gz`, and
  - `token` is a numeric id, mapped to words according to `../token-frequencies/wordlist.h5` and filtered to only include the 3.5m words in that list.
 
-The integer ids are large but worth it, as the dataset is very small, despite using a fast-read/low-compression format called BLOSC.
+The integer ids are an extra step but worth it for fast book-level processing, where reading EF files would be slow. The dataset is only about 250GB, compressed with a fast-read/low-compression format called BLOSC.
 
-The dataset is stored in PyTables HDF files, in a table called `/unigrams`. Here's one example of reading it using Pandas, with the `stop` argument used to only read the first 10k lines:
+**Provenance**: Crunched on EF 2.0 in 2017.
+
+**Sample File**: `./sample/sample.h5`
+
+**Example Read in Python**
+
+The dataset is stored in PyTables HDF files, in a table called `/unigrams`. Here's one example of reading it using Pandas:
 
 ```python
 import pandas as pd
-df = pd.read_hdf('./counts.100.h5', '/unigrams', stop=10000)
+df = pd.read_hdf('sample.h5', '/unigrams')
 df.head()
 ```
 
