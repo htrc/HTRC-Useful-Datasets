@@ -30,3 +30,10 @@ with pd.HDFStore('./token-frequencies-by-language.h5', mode='r') as store:
 The vocabulary used in HT+Bookworm, with 3.5 million words selected in order to include the top frequency words from all languages in the Hathitrust, with a longer tail for the most represented languages.
 
 The H5 version of the dataset has a '/final' table and a '/fixes' table, the latter remapping words that should be counted as being the same. This is due to an issue in the EF 2.0 files where zero-width (effectively invisible) characters were saved with some words in Chinese, Japanese, Chinese.
+
+
+## A Smaller English Language Vocabulary
+
+A lowercased, purposively-selective English vocabulary list is available in `eng-vocab-1.txt.bz2`.
+
+The culling used heuristics and, lower in the tail, selected words based on their character trigram probabilities. See more in `notebooks/EnglishWordList.ipynb`.
